@@ -4,8 +4,8 @@ from influxdb import InfluxDBClient
 import time,math,random
 
 
-#获取当前运行的pid
-p1=psutil.Process(os.getpid()) 
+# 获取当前运行的pid
+p1 = psutil.Process(os.getpid())
 
 
 # from influxdb import InfluxDBClient
@@ -32,6 +32,6 @@ while True:
     client = InfluxDBClient('localhost', 8086, 'root', 'root', 'xxyyxx')
     client.create_database('xxyyxx',if_not_exists=False)
     client.write_points(json_body)
-    #result = client.query('select value from cpu_load_short;')
-    #print("Result: {0}".format(result))
+    # result = client.query('select value from cpu_load_short;')
+    # print("Result: {0}".format(result))
     time.sleep(2)

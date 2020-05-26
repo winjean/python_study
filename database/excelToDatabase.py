@@ -6,7 +6,7 @@ config = {
 	'user': 'root',
 	'password': 'root',
 	'charset': 'utf8mb4',
-	#'cursorclass': pymysql.cursors.DictCursor
+	# 'cursorclass': pymysql.cursors.DictCursor
 
 }
 conn = pymysql.connect(**config)
