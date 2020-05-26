@@ -1,7 +1,7 @@
 import pymysql
 
 
-class MysqlUtils():
+class MysqlUtils:
 
     def __init__(self, host, user, pwd, db, port=3306, charset='utf8'):
         self.host = host
