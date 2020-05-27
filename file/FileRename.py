@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+
 import os
 current_dir = os.getcwd()
 # subdir = os.listdir(dir)
