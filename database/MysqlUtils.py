@@ -49,12 +49,12 @@ class MysqlUtils:
         return self.cur.rowcount
 
     def execute_many(self, sql, params):
-        '''
+        """
         批量插入数据
         :param sql:    插入数据模版, 需要指定列和可替换字符串个数
         :param params:  插入所需数据，列表嵌套元组[(1, '张三', '男'),(2, '李四', '女'),]
         :return:    影响行数
-        '''
+        """
         try:
             self.cur.executemany(sql, params)
             self.conn.commit()
