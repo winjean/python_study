@@ -39,7 +39,23 @@ def read_excel(sheet):
     return sheet_data
 
 
-class ExcelUtils:
+class ReadExcelUtils:
+
+    def __init__(self, file_path):
+        # 定义一个属性接收文件路径
+        self.file_path = file_path
+
+        # 使用xlrd模块打开excel表读取数据
+        self.workbook = xlrd.open_workbook(self.file_path)
+
+    def get_sheet_names(self):
+        return self.workbook.sheet_names()
+
+    def get_sheet(self, sheet_name):
+        return self.workbook.sheet_by_name(sheet_name)
+
+
+class WriteXLSExcelUtils:
 
     def __init__(self, file_path):
         # 定义一个属性接收文件路径
@@ -55,28 +71,65 @@ class ExcelUtils:
         return self.data.sheet_by_name(sheet_name)
 
 
+def set_sheet_name(sheet, sheet_name):
+    sheet.title = sheet_name
+
+
+class WriteXLSXExcelUtils:
+
+    def __init__(self, file_path, sheet_name, titles, contents):
+        # 使用xlrd模块打开excel表读取数据
+        self.workbook = openpyxl.Workbook()
+
+        # 定义一个属性接收文件路径
+        self.file_path = file_path
+
+        # 定义一个属性接收sheet名称
+        self.sheet_name = sheet_name
+
+        # 定义一个属性接收sheet中的标题
+        self.titles = titles
+
+        # 定义一个属性接收sheet中的内容
+        self.contents = contents
+
+    def set_sheet_title(self, sheet):
+        for col in range(len(self.titles)):
+            c = col + 1
+            sheet.cell(row=1, column=c).value = self.titles[col]
+
+    def set_sheet_contents(self, sheet):
+        for col in range(len(self.contents)):
+            sheet.append(self.contents[col])
+
+    def save(self):
+        return self.workbook.save(self.file_path)
+
+
 def main():
+    # 读excel文件
     filename = "d:/test.xlsx"
-    get_data = ExcelUtils(filename)
+    get_data = ReadExcelUtils(filename)
     sheet_names = get_data.get_sheet_names()
     for name in sheet_names:
         print(read_excel(get_data.get_sheet(name)))
 
+    # 写内容到xlsx格式的excel文件中
+    titles = ["a", "b", "c", "d", "e"]
+    contents = [
+                ["a1", "b1", "c1", "d1", "e1"],
+                {"a": "a2", "b": "b2", "c": "c2", "d": "d2", "e": "e2"},
+                {1: "a3", 3: "c3", 5: "哈哈"}
+        ]
+    excel = WriteXLSXExcelUtils("d:/test1.xlsx", "你好", titles, contents)
+    # sheet = excel.workbook.create_sheet(excel.sheet_name)
+    sheet = excel.workbook.active
+    # sheet.sheet_properties.tabColor = "1072BA"
+    sheet.title = excel.sheet_name
+    excel.set_sheet_title(sheet)
+    excel.set_sheet_contents(sheet)
+    excel.save()
+
 
 if __name__ == '__main__':
     main()
-
-# wb = Workbook()
-# dest_filename = 'empty_book2.xlsx'
-# ws1 = wb.active  # 第一个表
-# ws1.title = "range names"  # 第一个表命名
-# # 遍历第一个表的1到40行，赋值一个600内的随机数
-# for row in range(1, 40):
-#     ws1.append(range(60))
-# ws2 = wb.create_sheet(title="Pi")
-# ws2['F5'] = 3.14
-# ws3 = wb.create_sheet(title="Data")
-# for row in range(10, 20):
-#     for col in range(27, 54):
-#         _ = ws3.cell(column=col, row=row, value="%s" % get_column_letter(col))
-# wb.save(filename=dest_filename)
