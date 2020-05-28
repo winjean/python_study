@@ -145,6 +145,7 @@ def merge_sort(alist):
         else:
             result.append(right_li[right_pointer])
             right_pointer += 1
+
     # 当左右表的某一个表的指针偏移到末尾的时候，比较大小结束，将另一张表中的数据（有序）添加到result中
     result += left_li[left_pointer:]
     result += right_li[right_pointer:]
@@ -153,7 +154,7 @@ def merge_sort(alist):
 
 
 def main():
-    alist = [2, 3, 4, 5, 9, 6, 7]
+    alist = [8, 4, 3, 1, 5, 0, 9, 2, 6, 7]
     print(alist)
     # bubble_sort(alist)
     # selection_sort(alist)
