@@ -12,7 +12,9 @@ from time import sleep
 chrome_driver = r"D:\Python\Python38-32\Lib\site-packages\selenium\webdriver\chrome\chromedriver.exe"
 options = Options()
 
-options.add_argument('User-Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"')
+options.add_argument('User-Agent="Mozilla/5.0 '
+                     '(Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                     'Chrome/74.0.3729.169 Safari/537.36"')
 # options.add_argument('--headless')   # 无界面化.
 # options.add_argument('--disable-gpu')    # 配合上面的无界面化.
 options.add_argument('--start-maximized')   # 设置窗口大小, 窗口大小会有影响.
@@ -25,7 +27,10 @@ url = 'http://10.20.4.61:8080/isnp-web/#/login'
 # url = 'http://10.20.4.61:8080/isnp-web/#/dashboardSub'
 # 打开浏览器预设网址
 browser.get(url)
-browser.execute_script('sessionStorage.setItem("Isnp-Token","eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJCMDgxMEUyMTlEMkE0MzhDQUMzMjJGNzg3NTZFRTE0QyIsInN1YiI6IntcInVpZFwiOlwiMVwiLFwibmFtZVwiOlwiYWRtaW5cIixcInVuaXRJZFwiOlwiMVwifSIsImlhdCI6MTU5MDY0MjgzOH0.CelgZ6UsaU5bDpZVcDWW9ncxMMhrcysym_heHTmsGps");')
+browser.execute_script('sessionStorage.setItem("Isnp-Token","eyJhbGciOiJIUzI1NiJ9.'
+                       'eyJqdGkiOiJCMDgxMEUyMTlEMkE0MzhDQUMzMjJGNzg3NTZFRTE0QyIsInN1YiI6IntcInVpZFwiOlwiMVwiLFwibmFtZ'
+                       'VwiOlwiYWRtaW5cIixcInVuaXRJZFwiOlwiMVwifSIsImlhdCI6MTU5MDY0MjgzOH0.'
+                       'CelgZ6UsaU5bDpZVcDWW9ncxMMhrcysym_heHTmsGps");')
 browser.refresh()
 
 
