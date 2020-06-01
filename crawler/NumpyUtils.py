@@ -2,6 +2,8 @@ import numpy as np
 
 a = np.arange(12).reshape(3, 2, 2)
 print(f"a = {a}\n")
+a = a.reshape(2, -1)
+print(a)
 
 print(f"a[0] = {a[0]}\n")
 
