@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+
 import numpy as np
 
 a = np.arange(12).reshape(3, 2, 2)

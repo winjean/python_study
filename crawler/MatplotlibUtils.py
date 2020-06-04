@@ -69,18 +69,31 @@ def scatter_chart(title):
     plt.show()
 
 
+def grid_chart(title):
+
+    plt.subplot2grid((3, 3), (0, 0), colspan=3)
+    plt.subplot2grid((3, 3), (1, 0), colspan=2)
+    plt.subplot2grid((3, 3), (1, 2), rowspan=2)
+    plt.subplot2grid((3, 3), (2, 0))
+    plt.subplot2grid((3, 3), (2, 1))
+    # plt.savefig("scatter")
+    plt.show()
+
+
 def main():
     # 饼图
     # pie_chart(u'饼图', ['aa', 'bb', 'Dogs', 'Logs'], [15, 30, 45, 10], (0, 0.05, 0, 0.05))
 
     # 柱状图
-    bar_chart(u'电力窃漏电用户自动识别--总耗电量', u"用户名", u"总耗电量", [u'用户A', u'用户B', u'用户C', u'用户D'])
+    # bar_chart(u'电力窃漏电用户自动识别--总耗电量', u"用户名", u"总耗电量", [u'用户A', u'用户B', u'用户C', u'用户D'])
 
     # 极坐标
     # polar_chart()
 
     # 散点图
     # scatter_chart(u'散点图')
+
+    grid_chart(u"aaa")
 
 
 if __name__ == '__main__':
