@@ -28,18 +28,26 @@ import numpy as np
 # print(pd.Timedelta(6, unit='h'))
 # print(pd.Timedelta(days=2))
 
-s = pd.Series(pd.date_range('2012-1-1', periods=3, freq='D'))
-td = pd.Series([pd.Timedelta(days=i) for i in range(3)])
+# s = pd.Series(pd.date_range('2012-1-1', periods=3, freq='D'))
+# td = pd.Series([pd.Timedelta(days=i) for i in range(3)])
+#
+# aaa = pd.DataFrame(dict(A=s, B=td))
+# # print(aaa.values)
+#
+# aa = pd.Series(['a', 'b', 'c', 'd', 'e'])
+# aa = pd.Series(['a', 'b', 'c', 'd', 'e'], index=[11, 22, 33, 66, 99])
+# aa = pd.Series({22: 'a', 66: 'b', 77: 'c', 11: 'd', 99: 'e'}, index=[11, 22, 33, 66, 99])
+# # aa = pd.Series(9, index=[11, 22, 33, 66, 99])
+# print(aa)
+# print(aa[11])
+# print(aa[-2:])
+# print(len(aa))
 
-aaa = pd.DataFrame(dict(A=s, B=td))
-# print(aaa.values)
+datas = pd.read_excel("test.xlsx", index_col=0, header=0)
+print(datas.head(datas.size))
+# print(datas[['name', 'sex']].head(3))
+# print(datas[datas['sex'] == '男'].head(3))
+print(datas[datas['age'] > 12].groupby('sex').size())
+# print(datas.groupby('sex').size())
 
-aa = pd.Series(['a', 'b', 'c', 'd', 'e'])
-aa = pd.Series(['a', 'b', 'c', 'd', 'e'], index=[11, 22, 33, 66, 99])
-aa = pd.Series({22: 'a', 66: 'b', 77: 'c', 11: 'd', 99: 'e'}, index=[11, 22, 33, 66, 99])
-# aa = pd.Series(9, index=[11, 22, 33, 66, 99])
-print(aa)
-print(aa[11])
-print(aa[-2:])
-print(len(aa))
 
