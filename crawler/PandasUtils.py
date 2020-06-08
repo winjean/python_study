@@ -47,7 +47,9 @@ datas = pd.read_excel("test.xlsx", index_col=0, header=0)
 print(datas.head(datas.size))
 # print(datas[['name', 'sex']].head(3))
 # print(datas[datas['sex'] == '男'].head(3))
-print(datas[datas['age'] > 12].groupby('sex').size())
 # print(datas.groupby('sex').size())
-
+# print(datas[datas['age'] > 12].groupby('sex').size())
+print(pd.DataFrame(datas).groupby('sex')['age'].agg([np.mean, np.sum, np.size, np.max, np.min, np.std]))
+# print(pd.DataFrame(datas).groupby('sex')['age'].sum())
+# print(pd.DataFrame(datas).groupby('sex')['age'].max())
 
