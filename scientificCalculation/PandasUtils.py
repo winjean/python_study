@@ -49,7 +49,13 @@ print(datas.head(datas.size))
 # print(datas[datas['sex'] == '男'].head(3))
 # print(datas.groupby('sex').size())
 # print(datas[datas['age'] > 12].groupby('sex').size())
-print(pd.DataFrame(datas).groupby('sex')['age'].agg([np.mean, np.sum, np.size, np.max, np.min, np.std]))
+# print(pd.DataFrame(datas).groupby('sex')['age'].agg([np.mean, np.sum, np.size, np.max, np.min, np.std]))
+print(pd.DataFrame(pd.DataFrame(datas).groupby('sex')))
+print(pd.DataFrame(datas).groupby('sex').filter(lambda x: len(x) > 2))
+print(pd.DataFrame(datas).groupby('sex').filter(lambda x: len(x) > 1)['age'].agg([sum, max, min]))
 # print(pd.DataFrame(datas).groupby('sex')['age'].sum())
 # print(pd.DataFrame(datas).groupby('sex')['age'].max())
+
+pd.DataFrame().to_json()
+
 
