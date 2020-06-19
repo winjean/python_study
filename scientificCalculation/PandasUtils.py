@@ -56,6 +56,5 @@ print(pd.DataFrame(datas).groupby('sex').filter(lambda x: len(x) > 1)['age'].agg
 # print(pd.DataFrame(datas).groupby('sex')['age'].sum())
 # print(pd.DataFrame(datas).groupby('sex')['age'].max())
 
-pd.DataFrame().to_json()
 
 
