@@ -38,7 +38,9 @@ import time
 
 
 class SchedulerUtils:
-    pass
+
+    def __init__(self, scheduler=BackgroundScheduler()):
+        self.scheduler = scheduler
 
 
 def main():
@@ -56,8 +58,11 @@ def main():
             # todo：异常处理, 告警等
             print('The job crashed :(' + event.traceback)
 
-        else:
+        elif isinstance(event, JobExecutionEvent):
             print('The job worked :)')
+
+        else:
+            print('uncheck event')
 
     # 定义调度器
     # scheduler = BackgroundScheduler(jobstores=jobstores, executors=executors, job_defaults=job_defaults, timezone=utc)
