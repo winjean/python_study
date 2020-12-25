@@ -23,7 +23,9 @@ def setup_logger(output_file=None, logging_config=None):
         logging.config.dictConfig(logging_config)
 
 
-def _create_logger(name):
+def _create_logger(name=None):
+    if name is None:
+        name = "root"
     return logging.getLogger(name)
 
 

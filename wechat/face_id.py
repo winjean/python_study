@@ -18,7 +18,7 @@ def random_str():
     str = 'abcdefghijklmnopqrstuvwxyz'
     r = ''
     for i in range(15):
-        index = random.randint(0,25)
+        index = random.randint(0, 25)
         r += str[index]
     return r
 

@@ -36,12 +36,12 @@ def recognition_captcha(data):
     im.save( filename_png ,"png")
     im.close()
     
-    result = youtu.generalocr( filename_png , data_type = 0 , seq = '')  #  0代表本地路径，1代表url
+    result = youtu.generalocr(filename_png, data_type=0, seq='')  #  0代表本地路径，1代表url
 
     return result
 
 
-def get_captcha(sessiona,headers):
+def get_captcha(sessiona, headers):
     ''' 获取验证码 '''
     
     need_cap = False
