@@ -4,7 +4,7 @@ from openpyxl import Workbook
 excel_name = "书籍.xlsx"
 wb = Workbook()
 ws1 = wb.active
-ws1.title='书籍'
+ws1.title = '书籍'
 
 
 def get_html(url):
@@ -15,7 +15,7 @@ def get_html(url):
 
 
 def get_con(html):
-    soup = BeautifulSoup(html,'html.parser')
+    soup = BeautifulSoup(html, 'html.parser')
     book_list = soup.find('div', attrs={'class': 'article'})
     page = soup.find('div', attrs={'class': 'paginator'})
     next_page = page.find('span', attrs={'class': 'next'}).find('a')
@@ -27,7 +27,7 @@ def get_con(html):
             x = m[0]+m[1]
         else:
             x = m[0]
-        #print(x)
+        # print(x)
         name.append(x)
     if next_page:
         return name, next_page.get('href')
@@ -37,16 +37,16 @@ def get_con(html):
 
 def main():
     url = 'https://book.douban.com/top250'
-    name_list=[]
+    name_list = []
     while url:
         html = get_html(url)
         name, url = get_con(html)
         name_list = name_list + name
     for i in name_list:
-        location = 'A%s'%(name_list.index(i)+1)
+        location = 'A%s' % (name_list.index(i)+1)
         print(i)
         print(location)
-        ws1[location]=i
+        ws1[location] = i
     wb.save(filename=excel_name)
 
 

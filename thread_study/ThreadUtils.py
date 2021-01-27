@@ -5,7 +5,7 @@ import threading
 from time import sleep
 import datetime
 
-loops = (15, 2, 8)
+loops = (4, 2, 8)
 
 
 class MyThread(threading.Thread):
@@ -30,13 +30,19 @@ def loop(nloop, nsec):
 
 def main():
     threads = []
+
+    # 获取一个数组[0,1,2]
     nloops = range(len(loops))
 
     for i in nloops:
+        # 构建线程
         t = MyThread(loop, (i + 1, loops[i]))
+
+        # 增加到线程数组中
         threads.append(t)
 
     for i in nloops:
+        # 遍历启动线程
         threads[i].start()
 
 

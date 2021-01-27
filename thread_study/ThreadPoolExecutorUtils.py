@@ -32,8 +32,8 @@ def main():
         # # 通过result来获取返回值
         # print(task1.result())
 
-        # 提交线程池
-        all_task = [t.submit(spider, page) for page in range(1, 5)]
+        # 提交线程池, page从[2,6), 步长为2
+        all_task = [t.submit(spider, page) for page in range(2, 6, 2)]
         # wait(all_task, return_when=FIRST_COMPLETED)
         # print('finished')
         # print(wait(all_task, timeout=1.5))
@@ -46,8 +46,7 @@ def main():
 
         # 按完成顺序输出结果
         for future in as_completed(all_task):
-            data = future.result()
-            print(f"main: {data}")
+            print(f"main: { future.result() }")
 
 
 if __name__ == '__main__':
