@@ -5,7 +5,7 @@
 # 冒泡排序
 def bubble_sort(alist):
     # 循环列表长度次数
-    for j in range(len(alist) - 1):
+    for j in range(len(alist) - 2):
         # 循环 比较前一个元素与后一个元素的大小
         for i in range(len(alist) - 1 - j):
             # 判断前一个元素比后一个元素大，元素交换位置
@@ -39,7 +39,7 @@ def insertion_sort(alist):
     # 循环列表长度
     for i in range(1, len(alist)):
 
-        # 当前元素比有序列表中的所有元素小，插入第一个位置，i-1<0条件不成立，结束wehile循环
+        # 当前元素比有序列表中的所有元素小，插入第一个位置，i-1<0条件不成立，结束while循环
         while i > 0:
             # 判断后一个元素小于前一个元素时，元素交换位置
             if alist[i] < alist[i - 1]:
@@ -87,7 +87,7 @@ def quick_sort(alist, start, end):
     if low > high:
         return
 
-        # 定义列表第一个索引下标为mid值
+    # 定义列表第一个索引下标为mid值
     mid = alist[low]
 
     while low < high:
@@ -156,12 +156,12 @@ def merge_sort(alist):
 def main():
     alist = [8, 4, 3, 1, 5, 0, 9, 2, 6, 7]
     print(alist)
-    # bubble_sort(alist)
+    bubble_sort(alist)
     # selection_sort(alist)
     # insertion_sort(alist)
     # shell_sort(alist)
     # quick_sort(alist, 0, len(alist) - 1)
-    alist = merge_sort(alist)
+    # alist = merge_sort(alist)
     print(alist)
 
 

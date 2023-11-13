@@ -79,5 +79,6 @@ def main():
     conn.close()  # 关闭数据库连接，不存数据库 注释此行
     wb.save('{}职位信息.xlsx'.format(lang_name))
 
+
 if __name__ == '__main__':
     main()
